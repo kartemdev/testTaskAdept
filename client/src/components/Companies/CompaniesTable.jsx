@@ -22,6 +22,13 @@ function CompaniesTable() {
     fetch('http://localhost:3001/totalCount', { method: 'GET' })
       .then((response) => response.json())
       .then((result) => setTotalCount(result.total));
+
+    // Раскоментировать для запуска локально, а выше запрос закоменнтировать
+
+      // fetch('http://localhost:3001/totalCount', { method: 'GET' })
+      // .then((response) => response.json())
+      // .then((result) => setTotalCount(result.total));
+
     if (fetching && currentLimit < totalCount + 10) {
       dispatch(getCompsThunk(currentLimit));
       setCurrentLimit((prev) => prev + 5);
