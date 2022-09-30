@@ -19,7 +19,7 @@ function CompaniesTable() {
   const [totalCount, setTotalCount] = useState(currentLimit + 1);
 
   useEffect(() => {
-    fetch('http://localhost:3001/totalCount', { method: 'GET' })
+    fetch('/totalCount', { method: 'GET' })
       .then((response) => response.json())
       .then((result) => setTotalCount(result.total));
 
