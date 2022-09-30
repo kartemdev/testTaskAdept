@@ -1,0 +1,14 @@
+.sizemodal {
+  width: 45vw
+}
+
+.divMain {
+
+}
+
+.upBut {
+ position: fixed;
+ left: 94vw;
+ top: 91vh;
+ z-index: 1000;
+}

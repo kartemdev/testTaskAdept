@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { addCompThunk } from '../../redux/actions&thunks/comps/addCompsAction';
+import { editCompsThunk } from '../../redux/actions&thunks/comps/editCompsAction';
 
-function CompaniesAddModal() {
+function CompaniesEditModal({ compObj }) {
   const dispatch = useDispatch();
 
   const [input, setInput] = useState({
@@ -16,24 +16,20 @@ function CompaniesAddModal() {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(addCompThunk(input));
-    setInput({
-      name: '',
-      adress: '',
-    });
+    dispatch(editCompsThunk({
+      id: compObj.id,
+      name: input.name,
+      adress: input.adress,
+    }));
   };
 
   return (
     <>
-      <button type="button" className="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Добавить компанию
-      </button>
-
-      <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div className="modal fade" id="exampleModal1" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title" id="exampleModalLabel">Форма добавления компании</h5>
+              <h5 className="modal-title" id="exampleModalLabel">Форма изменения данных компании</h5>
               <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" />
             </div>
             <form onSubmit={submitHandler}>
@@ -43,7 +39,7 @@ function CompaniesAddModal() {
               </div>
               <div className="modal-footer">
                 <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-                <button type="submit" className="btn btn-primary" data-bs-dismiss="modal">Добавить</button>
+                <button type="submit" className="btn btn-primary" data-bs-dismiss="modal">Изменить</button>
               </div>
             </form>
           </div>
@@ -53,4 +49,4 @@ function CompaniesAddModal() {
   );
 }
 
-export default CompaniesAddModal;
+export default CompaniesEditModal;

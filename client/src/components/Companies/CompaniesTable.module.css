@@ -1,0 +1,15 @@
+.sizemodal {
+  width: 45vw;
+}
+
+.color {
+  background-color: #d4e2fc;
+}
+
+.color[value=true]{
+  background-color: #d6e7df;
+}
+
+.color[value]:hover {
+  background-color: #d6e7df;
+}

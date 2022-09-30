@@ -1,0 +1,31 @@
+{
+  "name": "testtaskadept",
+  "version": "1.0.0",
+  "description": "Tables (companies &amp; employee)",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "heroku-postbuild": "cd client && npm install && npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WebDevLover/testTaskAdept.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WebDevLover/testTaskAdept/issues"
+  },
+  "homepage": "https://github.com/WebDevLover/testTaskAdept#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.2",
+    "express": "^4.18.1",
+    "pg": "^8.8.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.23.1",
+    "sequelize-cli": "^6.4.1"
+  }
+}

@@ -1,0 +1,16 @@
+.sizemodal {
+  width: 45vw;
+  z-index: 1;
+}
+
+.color {
+  background-color: #d0f4fc;
+}
+
+.color[value=true]{
+  background-color: #aad7b4;
+}
+
+.color[value]:hover {
+  background-color: #aad7b4;
+}

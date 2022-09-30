@@ -1,37 +1,28 @@
 /* eslint-disable consistent-return */
-const companiesReducer = (state = [], action) => {
+const employeesReducer = (state = [], action) => {
   switch (action.type) {
-  case 'GET_COMP':
+  case 'GET_EMP':
     return action.payload.sort();
-  case 'ADD_COMP':
+  case 'ADD_EMP':
     return [...state, action.payload];
-  case 'EDIT_COMP':
+  case 'EDIT_EMP':
     return state.map((obj) => (action.payload.id === obj.id ? action.payload : obj));
-  case 'CHECK_COMP':
+  case 'CHECK_EMP':
     return state.map((obj) => (
       obj.id === action.payload ? { ...obj, checked: !obj.checked } : obj
     ));
-  case 'ALL_CHECK_COMP':
+  case 'ALL_CHECK_EMP':
     if (action.payload === false) {
       return state.map((obj) => (obj.checked === false ? { ...obj, checked: true } : obj));
     } if (action.payload === true) {
       return state.map((obj) => (obj.checked === true ? { ...obj, checked: false } : obj));
     }
     break;
-  case 'COUNT_EMPS':
-    return state.map((obj) => (
-      obj.id === action.payload ? { ...obj, countEmps: obj.countEmps + 1 } : obj
-    ));
-  case 'UN_COUNT_EMP':
-    return state.map((obj) => (
-      obj.id === action.payload.id
-        ? { ...obj, countEmps: obj.countEmps - action.payload.emps.length } : obj
-    ));
-  case 'DELETE_COMP':
+  case 'DELETE_EMP':
     return state.filter((obj) => obj.checked === false);
   default:
     return state;
   }
 };
 
-export default companiesReducer;
+export default employeesReducer;

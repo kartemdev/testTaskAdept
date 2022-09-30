@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addEmpsThunk } from '../../redux/actions&thunks/emps/addEmpsAction';
+import { editEmpsThunk } from '../../redux/actions&thunks/emps/editEmpsAction';
 
-function EmployeesAddModal({ compId }) {
+function EmployeesEditModal({ empObj }) {
   const dispatch = useDispatch();
 
   const [input, setInput] = useState({
@@ -17,25 +18,20 @@ function EmployeesAddModal({ compId }) {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(addEmpsThunk([compId, input]));
+    dispatch(editEmpsThunk([empObj.id, input]));
     setInput({
       firstName: '',
       lastName: '',
       jobTitle: '',
     });
   };
-
   return (
     <>
-      <button type="button" className="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#exampleModalEmp">
-        Добавить сотрудника
-      </button>
-
-      <div className="modal fade" id="exampleModalEmp" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div className="modal fade" id="exampleModalEmp1" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title" id="exampleModalLabel">Форма добавления сотрудника</h5>
+              <h5 className="modal-title" id="exampleModalLabel">Форма изменения данных сотрудника</h5>
               <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" />
             </div>
             <form onSubmit={submitHandler}>
@@ -46,7 +42,7 @@ function EmployeesAddModal({ compId }) {
               </div>
               <div className="modal-footer">
                 <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-                <button type="submit" className="btn btn-primary" data-bs-dismiss="modal">Добавить</button>
+                <button type="submit" className="btn btn-primary" data-bs-dismiss="modal">Изменить</button>
               </div>
             </form>
           </div>
@@ -56,4 +52,4 @@ function EmployeesAddModal({ compId }) {
   );
 }
 
-export default EmployeesAddModal;
+export default EmployeesEditModal;
