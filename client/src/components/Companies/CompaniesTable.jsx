@@ -23,7 +23,7 @@ function CompaniesTable() {
       .then((response) => response.json())
       .then((result) => setTotalCount(result.total));
 
-    // Раскоментировать для запуска локально, а выше запрос закоменнтировать
+      // Раскомментировать для запуска локально, а выше запрос закомменнтировать
 
       // fetch('http://localhost:3001/totalCount', { method: 'GET' })
       // .then((response) => response.json())

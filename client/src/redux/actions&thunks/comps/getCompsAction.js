@@ -4,12 +4,12 @@ export const getCompsThunk = (payload) => async (dispatch) => {
   try {
     const response = await fetch(`/companies/${payload}`, { method: 'GET' });
 
-    // Раскоментировать для запуска локально, а выше запрос закоменнтировать
+    // Раскомментировать для запуска локально, а выше запрос закомменнтировать
 
     // const response = await fetch(`http://localhost:3001/companies/${payload}`, { method: 'GET' });
 
     if (response.status === 200) {
-      console.log('loafing data dynamic');
+      console.log('fetching');
       const result = await response.json();
       dispatch(getCompsAC(result));
     } else {

@@ -4,7 +4,7 @@ export const getEmpsThunk = (payload) => async (dispatch) => {
   try {
     const response = await fetch(`/employees/${payload}`, { method: 'GET' });
 
-    // Раскоментировать для запуска локально, а выше запрос закоменнтировать
+    // Раскомментировать для запуска локально, а выше запрос закомменнтировать
 
     // const response = await fetch(`http://localhost:3001/employees/${payload}`, { method: 'GET' });
 

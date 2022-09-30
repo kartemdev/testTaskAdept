@@ -17,7 +17,7 @@ export const addEmpsThunk = (payload) => async (dispatch) => {
       body: JSON.stringify(data),
     });
 
-    // Раскоментировать для запуска локально, а выше запрос закоменнтировать
+    // Раскомментировать для запуска локально, а выше запрос закомменнтировать
 
     // const response = await fetch(`http://localhost:3001/employees/${compId}`, {
     //   method: 'POST',

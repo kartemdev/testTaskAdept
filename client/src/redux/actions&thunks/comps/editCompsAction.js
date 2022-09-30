@@ -10,7 +10,7 @@ export const editCompsThunk = (payload) => async (dispatch) => {
       body: JSON.stringify(payload),
     });
 
-    // Раскоментировать для запуска локально, а выше запрос закоменнтировать
+    // Раскомментировать для запуска локально, а выше запрос закомментировать
 
     // const response = await fetch('http://localhost:3001/companies/limit', {
     //   method: 'PUT',
