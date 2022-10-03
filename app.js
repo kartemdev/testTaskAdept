@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+const { Op } = require('sequelize');
 const { Company, Employee, sequelize } = require('./db/models')
 
 const app = express();
@@ -24,12 +25,29 @@ app.get('/totalCount', async (req, res) => {
 app.route('/companies/:limit')
   .get(async (req, res) => {
     try {
-      const comps = await Company.findAll({
-        order: sequelize.literal('id ASC'),
-        limit: req.params.limit,
-      });
+      const findComps = req.params.limit;
 
-      res.status(200).json(comps)
+      if (!Number(findComps)) {
+
+        const comps = await Company.findAll({
+          where: {
+            name: {
+              [Op.or]: {
+                [Op.startsWith]: `${findComps}%`,
+              },
+            }
+          },
+        });
+
+        res.status(200).json(comps);
+      } else {
+        const comps = await Company.findAll({
+          order: sequelize.literal('id ASC'),
+          limit: req.params.limit,
+        });
+
+        res.status(200).json(comps);
+      }
     } catch (error) {
       console.log(error);
 

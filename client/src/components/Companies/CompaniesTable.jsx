@@ -11,6 +11,8 @@ function CompaniesTable() {
   const comps = useSelector((store) => store.comps);
   const dispatch = useDispatch();
 
+  const [input, setInput] = useState('')
+
   const [editComp, setEditComp] = useState({});
   const [check, setCheck] = useState(false);
 
@@ -19,22 +21,28 @@ function CompaniesTable() {
   const [totalCount, setTotalCount] = useState(currentLimit + 1);
 
   useEffect(() => {
-    fetch('/totalCount', { method: 'GET' })
-      .then((response) => response.json())
-      .then((result) => setTotalCount(result.total));
-
-      // Раскомментировать для запуска локально, а выше запрос закомменнтировать
-
-      // fetch('http://localhost:3001/totalCount', { method: 'GET' })
-      // .then((response) => response.json())
-      // .then((result) => setTotalCount(result.total));
-
-    if (fetching && currentLimit < totalCount + 10) {
-      dispatch(getCompsThunk(currentLimit));
-      setCurrentLimit((prev) => prev + 5);
-      setFetching(false);
+    if (input) {
+      dispatch({ type: 'FIND_COMP', payload: input });
+    } else {
+      fetch('/totalCount', { method: 'GET' })
+        .then((response) => response.json())
+        .then((result) => setTotalCount(result.total));
+  
+        // Раскомментировать для запуска локально, а выше запрос закомменнтировать
+  
+        // fetch('http://localhost:3001/totalCount', { method: 'GET' })
+        // .then((response) => response.json())
+        // .then((result) => setTotalCount(result.total));
+  
+      if (fetching && currentLimit < totalCount + 10) {
+        dispatch(getCompsThunk(currentLimit));
+        setCurrentLimit((prev) => prev + 5);
+        setFetching(false);
+      }
     }
-  }, [fetching]);
+  }, [fetching, input]);
+
+  console.log(input);
 
   const scrollHandler = (e) => {
     if (
@@ -52,6 +60,10 @@ function CompaniesTable() {
       document.removeEventListener('scroll', scrollHandler);
     };
   }, []);
+
+  const changeHandler = (e) => {
+    setInput(e.target.value)
+  }
 
   const setCompHandler = (obj) => {
     setEditComp(obj);
@@ -73,6 +85,7 @@ function CompaniesTable() {
 
   return (
     <>
+      <input onChange={changeHandler} type="text" value={input} placeholder="Search"></input>
       <table className={`table table-bordered border-dark ${styles.sizemodal}`}>
         <thead className="sticky-top">
           <tr className="table-warning table-bordered border-dark">
