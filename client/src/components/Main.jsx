@@ -10,6 +10,8 @@ import styles from './Main.module.css';
 function Main() {
   const comps = useSelector((store) => store.comps);
 
+  const [input, setInput] = useState('')
+
   const [oneCheck, setOneCheck] = useState([]);
 
   useEffect(() => {
@@ -38,6 +40,10 @@ function Main() {
     window.scrollTo(0, 0);
   };
 
+  const changeHandler = (e) => {
+    setInput(e.target.value)
+  }
+
   return (
     <div className="text-center mt-4">
       <button onClick={upScrollHandler} type="button" className={`${styles.upBut} btn btn-primary`}>↑</button>
@@ -45,9 +51,10 @@ function Main() {
       <div className="d-flex justify-content-around">
         {oneCheck.length ? (
           <>
-            <div className={`${styles.sizemodal} ${styles.divMain}`}>
+            <div className={`${styles.sizemodal} ${styles.divMain} d-flex flex-column justify-content-center`}>
+              <input onChange={changeHandler} type="text" value={input} placeholder="Search"></input>
               <CompaniesAddModal />
-              <CompaniesTable />
+              <CompaniesTable input={input} />
             </div>
             <div className={`${styles.sizemodal}`}>
               <EmployeesAddModal />
@@ -56,9 +63,10 @@ function Main() {
           </>
         )
           : (
-            <div className={`${styles.sizemodal}`}>
+            <div className={`${styles.sizemodal} d-flex flex-column justify-content-center`}>
+              <input onChange={changeHandler} type="text" value={input} placeholder="Search"></input>
               <CompaniesAddModal />
-              <CompaniesTable />
+              <CompaniesTable input={input} />
             </div>
           )}
       </div>

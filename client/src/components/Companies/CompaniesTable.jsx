@@ -7,11 +7,9 @@ import { getCompsThunk } from '../../redux/actions&thunks/comps/getCompsAction';
 import CompaniesEditModal from './CompaniesEditModal';
 import styles from './CompaniesTable.module.css';
 
-function CompaniesTable() {
+function CompaniesTable({ input }) {
   const comps = useSelector((store) => store.comps);
   const dispatch = useDispatch();
-
-  const [input, setInput] = useState('')
 
   const [editComp, setEditComp] = useState({});
   const [check, setCheck] = useState(false);
@@ -61,10 +59,6 @@ function CompaniesTable() {
     };
   }, []);
 
-  const changeHandler = (e) => {
-    setInput(e.target.value)
-  }
-
   const setCompHandler = (obj) => {
     setEditComp(obj);
   };
@@ -85,7 +79,6 @@ function CompaniesTable() {
 
   return (
     <>
-      <input onChange={changeHandler} type="text" value={input} placeholder="Search"></input>
       <table className={`table table-bordered border-dark ${styles.sizemodal}`}>
         <thead className="sticky-top">
           <tr className="table-warning table-bordered border-dark">
