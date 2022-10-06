@@ -10,7 +10,7 @@ Tables (companies &amp; employees)
 3. После успешной установки зависимостей перейдите в следующие файлы
     и выполните инструкции в комментариях:
 
-    1. client/components/Companies/CompaniesTable.jsx
+    1. client/src/components/Companies/CompaniesTable.jsx
 
     2. client/src/redux/actions&thunks/addCompsAction.js, editCompsAction.js, getCompsAction.js,
 
