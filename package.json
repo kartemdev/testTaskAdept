@@ -10,15 +10,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/WebDevLover/testTaskAdept.git"
+    "url": "git+https://github.com/kartemdev/testTaskAdept.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/WebDevLover/testTaskAdept/issues"
+    "url": "https://github.com/kartemdev/testTaskAdept/issues"
   },
-  "homepage": "https://github.com/WebDevLover/testTaskAdept#readme",
+  "homepage": "https://github.com/kartemdev/testTaskAdept#readme",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.0.2",
